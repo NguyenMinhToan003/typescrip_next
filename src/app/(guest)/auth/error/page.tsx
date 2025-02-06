@@ -1,4 +1,4 @@
-import ErrorPage from "@/components/element/auth.error"
+import ErrorPage from '@/components/element/auth.error'
 
 const Page = ()=>{
   return <>

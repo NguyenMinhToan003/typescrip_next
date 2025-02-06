@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error", // Báo lỗi khi sử dụng 'any'
+    "@typescript-eslint/no-unused-vars": "error", // Báo lỗi khi có biến không sử dụng
+    "@typescript-eslint/no-empty-object-type": "error", // Báo lỗi với interface không có thuộc tính
+    "no-ex-assign": "error", // Báo lỗi khi thay đổi tham số exception,
+    "semi": ["error", "never"],  // Báo lỗi nếu có dấu chấm phẩy
+    "quotes": ["error", "single"]  // Báo lỗi nếu có dấu nháy kép
+  }
 }

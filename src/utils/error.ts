@@ -1,4 +1,4 @@
-import { CredentialsSignin } from "next-auth";
+import { CredentialsSignin } from 'next-auth'
 
 export class InvalidLoginError extends CredentialsSignin {
   code = 'Tài khoản hoặc mật khẩu không chính xác '

@@ -1,9 +1,9 @@
 import NextAuth, { User } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
-import { InternalError, InvalidActiveAccountError, InvalidLoginError } from './utils/error';
-import axiosInstance from './utils/axios';
-import { HttpStatusCode } from 'axios';
-import { IUser } from './types/next-auth';
+import { InternalError, InvalidActiveAccountError, InvalidLoginError } from './utils/error'
+import axiosInstance from './utils/axios'
+import { HttpStatusCode } from 'axios'
+import { IUser } from './types/next-auth'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -18,12 +18,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const res = await axiosInstance.post('/auth/login', {
             email: credentials.email,
             password: credentials.password,
-          });
+          })
           const user = res.data as User
           return user
         }
         catch(error){
-          const { data } = (error as any).response;
+          const { data } = (error as any).response
           if( data.statusCode === HttpStatusCode.Unauthorized){
             throw new InvalidLoginError()
           }
@@ -31,7 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             throw new InvalidActiveAccountError()
           }
           else {
-            throw new InternalError();
+            throw new InternalError()
           }
         }
       },

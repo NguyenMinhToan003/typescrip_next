@@ -1,7 +1,7 @@
-import { Icons } from '@/components/element/icons';
-import PopoverEditUser from '@/components/element/popover-edit-user';
-import { Avatar, AvatarImage } from '@/components/ui/avatar';
-import { AvatarFallback } from '@radix-ui/react-avatar';
+import { Icons } from '@/components/element/icons'
+import PopoverEditUser from '@/components/element/popover-edit-user'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { AvatarFallback } from '@radix-ui/react-avatar'
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/components/ui/table'
 
 export default function UserPage({ children }: { children: React.ReactNode }) {
   return (
@@ -53,5 +53,5 @@ export default function UserPage({ children }: { children: React.ReactNode }) {
         </TableRow>
       </TableBody>
     </Table>
-  );
+  )
 }

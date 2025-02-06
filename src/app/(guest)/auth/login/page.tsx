@@ -1,8 +1,8 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import { ModeToggle } from '@/components/element/theme-selector';
-import { Icons } from '@/components/element/icons';
-import { UserLoginForm } from '@/components/element/form-login';
+import { ModeToggle } from '@/components/element/theme-selector'
+import { Icons } from '@/components/element/icons'
+import { UserLoginForm } from '@/components/element/form-login'
 
 export default function LoginPage() {
 	return (
@@ -51,5 +51,5 @@ export default function LoginPage() {
 				</div>
 			</div>
 		</>
-	);
+	)
 }

@@ -1,10 +1,11 @@
 'use client'
 
-import { Icons } from "@/components/element/icons"
-import Link from "next/link";
-import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Button } from "../ui/button";
+import { Icons } from '@/components/element/icons'
+import Link from 'next/link'
+import { useState } from 'react'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Button } from '../ui/button'
+import { signOut } from '@/auth'
 
 const MenuItems = [
   {
@@ -42,28 +43,22 @@ const MenuItems = [
     active: false,
     url: '/admin/profile',
     icon: <Icons.profile />,
-  },
-  {
-    title: 'Đăng xuất',
-    active: false,
-    url: '/auth/logout',
-    icon: <Icons.logout />,
-  },
-];
+  }
+]
 
 const NavAdmin = () => {
-  const [active, setActive] = useState(MenuItems);
+  const [active, setActive] = useState(MenuItems)
   const handleMenuClick = (item: any) => {
 		const updatedItems = MenuItems.map((i) => {
 			if (i.title === item.title) {
-				i.active = true;
+				i.active = true
 			} else {
-				i.active = false;
+				i.active = false
 			}
-			return i;
-		});
-		setActive(updatedItems);
-	};
+			return i
+		})
+		setActive(updatedItems)
+	}
   return (<aside className='sticky top-0 h-screen w-56 bg-gray-100 text-gray-800 p-4'>
 				<div className='flex items-center mb-4 space-x-1 min-w-3/5 max-w-3/5'>
 					<Icons.logo/>
@@ -89,10 +84,11 @@ const NavAdmin = () => {
 							<span className='text-sm font-medium'>{item.title}</span>
 						</Link>
 					))}
-          <Button
-            variant={'secondary'}
-							className={`w-full flex items-center space-x-2 hover:bg-gray-200 py-2 px-2 rounded-lg text-gray-800 '}`}
-						>
+          <Button 
+            variant={'destructive'} 
+            className='w-full justify-start'
+            onClick={() => signOut()}
+          >
 							<Icons.logout />
 							<span className='text-sm font-medium'>Đăng xuất</span>
 						</Button>

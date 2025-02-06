@@ -1,4 +1,4 @@
-import HeaderAdminUser from "@/components/element/header-admin-user";
+import HeaderAdminUser from '@/components/element/header-admin-user'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -6,5 +6,5 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <HeaderAdminUser/>
       {children}
     </div>
-  ); 
+  ) 
 }

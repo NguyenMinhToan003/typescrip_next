@@ -1,17 +1,17 @@
 // utils/axios.js
 
-import axios from "axios";
+import axios from 'axios'
 
 // Tạo instance axios với cấu hình mặc định
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:4000/api/v1", // URL của API backend
+  baseURL: 'http://localhost:4000/api/v1', // URL của API backend
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
-});
+})
 axiosInstance.interceptors.response.use(
   (response) => {
-    return response;
+    return response
   },
   (error) => {
     // Xử lý lỗi toàn cục, ví dụ: 401, 500,...
@@ -19,8 +19,8 @@ axiosInstance.interceptors.response.use(
     //   // Ví dụ: Chuyển hướng đến trang đăng nhập nếu token hết hạn
     //   window.location.href = "/login";
     // }
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
-);
+)
 
-export default axiosInstance;
+export default axiosInstance

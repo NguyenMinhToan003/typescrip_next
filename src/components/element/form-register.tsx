@@ -1,56 +1,56 @@
-'use client';
+'use client'
 
-import * as React from 'react';
-import { useRouter } from 'next/navigation';
-import { cn } from '@/lib/utils';
-import { Icons } from '@/components/element/icons';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Toaster, toast } from 'sonner';
+import * as React from 'react'
+import { useRouter } from 'next/navigation'
+import { cn } from '@/lib/utils'
+import { Icons } from '@/components/element/icons'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Toaster, toast } from 'sonner'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserRegisterForm({ className, ...props }: UserAuthFormProps) {
-	const router = useRouter();
+	const router = useRouter()
 
-	const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [name, setName] = React.useState<string>('');
-	const [email, setEmail] = React.useState<string>('');
-	const [password, setPassword] = React.useState<string>('');
-  const [rePassword, setRePassword] = React.useState<string>('');
+	const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [name, setName] = React.useState<string>('')
+	const [email, setEmail] = React.useState<string>('')
+	const [password, setPassword] = React.useState<string>('')
+  const [rePassword, setRePassword] = React.useState<string>('')
   const checkPassword = (password: string, rePassword: string) => {
     if(password === rePassword){
-      return true;
+      return true
     }
-    toast.error('mật khẩu không khớp');
-    return false;
+    toast.error('mật khẩu không khớp')
+    return false
   }
 	const checkLength = (password: string) => {
 		if(password.length < 6){
-			toast.error('mật khẩu phải có ít nhất 6 ký tự');
-			return false;
+			toast.error('mật khẩu phải có ít nhất 6 ký tự')
+			return false
 		}
-		return true;
+		return true
 	}
   const checkList =(name: string, email: string, password: string, rePassword: string) => {
     if(!checkPassword(password, rePassword)){
-      return false;
+      return false
     }
 		if(!checkLength(password)){
-			return false;
+			return false
 		}
     if(name==='' && email==='' && password==='' && rePassword===''){
       toast.error('hãy điền đầy đủ thông tin')
-      return false;
+      return false
     }
-    return true;
+    return true
   }
 	const onSubmit=async (event: React.SyntheticEvent) => {
-    event.preventDefault();
+    event.preventDefault()
     setIsLoading(true)
     if(checkList(name, email, password, rePassword)){
-      toast.success('đăng ký thành công');
+      toast.success('đăng ký thành công')
     }
     setIsLoading(false)
 	}
@@ -115,5 +115,5 @@ export function UserRegisterForm({ className, ...props }: UserAuthFormProps) {
 				</form>
 			</div>
 		</>
-	);
+	)
 }

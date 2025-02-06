@@ -3,5 +3,5 @@ export default function CategoriesPage() {
     <div>
       categorie page
     </div>
-  ); 
+  ) 
 }

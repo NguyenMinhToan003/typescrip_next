@@ -1,16 +1,16 @@
-"use client"
+'use client'
  
-import { useSearchParams } from "next/navigation"
+import { useSearchParams } from 'next/navigation'
  
 enum Error {
-  Configuration = "Configuration",
+  Configuration = 'Configuration',
 }
  
 const errorMap = {
   [Error.Configuration]: (
     <p>
       There was a problem when trying to authenticate. Please contact us if this
-      error persists. Unique error code:{" "}
+      error persists. Unique error code:{' '}
       <code className="rounded-sm bg-slate-100 p-1 text-xs">Configuration</code>
     </p>
   ),
@@ -18,7 +18,7 @@ const errorMap = {
  
 export default function AuthErrorPage() {
   const search = useSearchParams()
-  const error = search.get("error") as Error
+  const error = search.get('error') as Error
  
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center">
@@ -30,7 +30,7 @@ export default function AuthErrorPage() {
           Something went wrong
         </h5>
         <div className="font-normal text-gray-700 dark:text-gray-400">
-          {errorMap[error] || "Please contact us if this error persists."}
+          {errorMap[error] || 'Please contact us if this error persists.'}
         </div>
       </a>
     </div>

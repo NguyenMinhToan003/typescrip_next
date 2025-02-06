@@ -35,7 +35,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
 		return true                
 	}
 	const onSubmit = async(e: React.FormEvent)=> {
-		e.preventDefault();
+		e.preventDefault()
 		setIsLoading(true)
 		const isActive = isPassCheckList(email, password)
 		if(isActive){

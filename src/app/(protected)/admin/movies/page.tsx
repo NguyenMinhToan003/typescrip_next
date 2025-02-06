@@ -3,5 +3,5 @@ export default function MoviesPage() {
     <div>
       user page
     </div>
-  ); 
+  ) 
 }

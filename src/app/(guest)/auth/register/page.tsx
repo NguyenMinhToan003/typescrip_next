@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { Icons } from '@/components/element/icons';
-import { UserRegisterForm } from '@/components/element/form-register';
+import Link from 'next/link'
+import { Icons } from '@/components/element/icons'
+import { UserRegisterForm } from '@/components/element/form-register'
 
 export default function RegisterPage() {
 	return (
@@ -38,5 +38,5 @@ export default function RegisterPage() {
 				</div>
 			</div>
 		</>
-	);
+	)
 }

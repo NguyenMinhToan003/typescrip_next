@@ -1,6 +1,6 @@
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Icons } from "./icons";
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
+import { Icons } from './icons'
 
 export default function HeaderAdminUser() {
   return (
@@ -14,5 +14,5 @@ export default function HeaderAdminUser() {
       </div>
       <Button><Icons.plus/>Thêm</Button>
    </div>
-  ); 
+  ) 
 }
