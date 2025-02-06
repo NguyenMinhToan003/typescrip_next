@@ -4,6 +4,7 @@ import { Icons } from "@/components/element/icons"
 import Link from "next/link";
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
 
 const MenuItems = [
   {
@@ -64,7 +65,7 @@ const NavAdmin = () => {
 		setActive(updatedItems);
 	};
   return (<aside className='sticky top-0 h-screen w-56 bg-gray-100 text-gray-800 p-4'>
-				<div className='flex items-center mb-4 space-x-1 w-3/5'>
+				<div className='flex items-center mb-4 space-x-1 min-w-3/5 max-w-3/5'>
 					<Icons.logo/>
           <Avatar className="w-7 h-7">
               <AvatarImage
@@ -88,6 +89,13 @@ const NavAdmin = () => {
 							<span className='text-sm font-medium'>{item.title}</span>
 						</Link>
 					))}
+          <Button
+            variant={'secondary'}
+							className={`w-full flex items-center space-x-2 hover:bg-gray-200 py-2 px-2 rounded-lg text-gray-800 '}`}
+						>
+							<Icons.logout />
+							<span className='text-sm font-medium'>Đăng xuất</span>
+						</Button>
 				</nav>
         </aside>)
 }
