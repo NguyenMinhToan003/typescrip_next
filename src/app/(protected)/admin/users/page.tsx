@@ -16,13 +16,13 @@ export default function UserPage({ children }: { children: React.ReactNode }) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead scope="col">Avatar</TableHead>
-          <TableHead scope="col">TênTên</TableHead>
-          <TableHead scope="col">Email</TableHead>
-          <TableHead scope="col">Vai trò</TableHead>
-          <TableHead scope="col">Kiểu tài khoản</TableHead>
-          <TableHead scope="col">Trạng thái</TableHead>
-          <TableHead scope="col"></TableHead>
+          <TableHead>Avatar</TableHead>
+          <TableHead>TênTên</TableHead>
+          <TableHead>Email</TableHead>
+          <TableHead>Vai trò</TableHead>
+          <TableHead>Kiểu tài khoản</TableHead>
+          <TableHead>Trạng thái</TableHead>
+          <TableHead></TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
