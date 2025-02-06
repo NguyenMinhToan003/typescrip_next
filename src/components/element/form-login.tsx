@@ -43,7 +43,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
 			if((response as any)?.error){
 				toast.error(response?.code)
 				if(response?.name === 'InvalidActiveAccountError'){
-					push('/auth/active-account')
+					push('/auth/verify')
 				}
 			}
 			else {

@@ -2,7 +2,7 @@ import NextAuth, { User } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import { InternalError, InvalidActiveAccountError, InvalidLoginError } from './utils/error'
 import axiosInstance from './utils/axios'
-import { HttpStatusCode } from 'axios'
+import {HttpStatusCode } from 'axios'
 import { IUser } from './types/next-auth'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -23,7 +23,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           return user
         }
         catch(error){
-          const { data } = (error as any).response
+          const { data } =(error as any).response
           if( data.statusCode === HttpStatusCode.Unauthorized){
             throw new InvalidLoginError()
           }
@@ -43,7 +43,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     //  By default, the `id` property does not exist on `token` or `session`. See the [TypeScript](https://authjs.dev/getting-started/typescript) on how to add it.
   callbacks: {
       jwt({ token, user }) {
-        if (user) { // User is available during sign-in
+        if (user) { 
           token.user = user.data as IUser
           token.access_token = user.access_token
           token.refresh_token = user.refresh_token
@@ -57,6 +57,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.refresh_token = token.refresh_token
         session.access_expire = token.access_expire
         return session
-      },
+    },
+      authorized: async ({ auth }) => {
+      // Logged in users are authenticated, otherwise redirect to login page
+      return !!auth
+    },
     },
 })
