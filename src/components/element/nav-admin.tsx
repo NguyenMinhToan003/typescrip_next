@@ -3,9 +3,9 @@
 import { Icons } from '@/components/element/icons'
 import Link from 'next/link'
 import { useState } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+
 import { Button } from '../ui/button'
-import { signOut } from '@/auth'
+import { signOut } from 'next-auth/react'
 
 const MenuItems = [
   {
@@ -60,16 +60,9 @@ const NavAdmin = () => {
 		setActive(updatedItems)
 	}
   return (<aside className='sticky top-0 h-screen w-56 bg-gray-100 text-gray-800 p-4'>
-				<div className='flex items-center mb-4 space-x-1 min-w-3/5 max-w-3/5'>
-					<Icons.logo/>
-          <Avatar className="w-7 h-7">
-              <AvatarImage
-                src="https://yt3.ggpht.com/mKlZ7TlYPI2iivAuS5T1a2xfjPU_0kfSSmQG7b35Kg2F5XmEG35WLFYjz_-CPGHo1X_hkEMHSQ=s88-c-k-c0x00ffffff-no-rj"
-                alt="User Avatar"
-              />
-              <AvatarFallback>U</AvatarFallback>
-            </Avatar>
-				</div>
+				<div className="flex items-center mb-4 space-x-1 min-w-3/5 max-w-3/5">
+        <Icons.logo />
+      </div>
         <nav className='space-y-2'>
 					{MenuItems.map((item) => (
 						<Link
