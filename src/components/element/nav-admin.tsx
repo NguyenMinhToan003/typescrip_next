@@ -61,7 +61,9 @@ const NavAdmin = () => {
 	}
   return (<aside className='sticky top-0 h-screen w-56 bg-gray-100 text-gray-800 p-4'>
 				<div className="flex items-center mb-4 space-x-1 min-w-3/5 max-w-3/5">
+      <Link href='/'>
         <Icons.logo />
+      </Link>
       </div>
         <nav className='space-y-2'>
 					{MenuItems.map((item) => (

@@ -1,6 +1,9 @@
-const Page = ()=>{
+import VerifyAccount from "@/components/element/verify-account"
+
+const Page = ({params}: {params: { id: string }}) => {
   return <>
-    Verify your email to activate your account
+    <VerifyAccount id={params.id} />
   </>
 }
+
 export default Page

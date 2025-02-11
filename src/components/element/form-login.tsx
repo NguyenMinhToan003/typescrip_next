@@ -4,11 +4,11 @@ import { Icons } from '@/components/element/icons'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { toast, Toaster } from 'sonner'
+import { toast } from 'sonner'
 import { authenticate } from '@/utils/actions'
 import { useState, HTMLAttributes } from 'react'
 import { useRouter } from 'next/navigation'
-
+import { DialogVerifyAccount } from './dialog-verify-account'
 
 interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -41,9 +41,9 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
 		if(isActive){
 			const response = await authenticate(email, password)
 			if((response as any)?.error){
-				toast.error(response?.code)
-				if(response?.name === 'InvalidActiveAccountError'){
-					push('/auth/verify')
+				toast.error(response?.message)
+				if(response?.statusCode === 422){
+					push(`/verify/${response.data}`)
 				}
 			}
 			else {
@@ -56,7 +56,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
 	
 	return (
 		<>
-			<Toaster richColors/>
+			<DialogVerifyAccount/>
 			<div className={cn('grid gap-6', className)} {...props}>
 			<form onSubmit={onSubmit}>
 					<div className='grid gap-2'>
@@ -65,6 +65,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
 								Email
 							</Label>
 							<Input
+								autoFocus
 								id='email'
 								placeholder='name@example.com'
 								type='email'
