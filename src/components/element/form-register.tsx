@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Toaster, toast } from 'sonner'
+import axiosInstance from '@/utils/axios'
+import { HttpStatusCode } from 'axios'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -46,14 +48,37 @@ export function UserRegisterForm({ className, ...props }: UserAuthFormProps) {
     }
     return true
   }
-	const onSubmit=async (event: React.SyntheticEvent) => {
-    event.preventDefault()
-    setIsLoading(true)
-    if(checkList(name, email, password, rePassword)){
-      toast.success('đăng ký thành công')
+const onSubmit = async (event: React.SyntheticEvent) => {
+  event.preventDefault();
+  setIsLoading(true);
+
+  if (checkList(name, email, password, rePassword)) {
+    try {
+      const response = await axiosInstance.post<IBackendRes<any>>('/auth/register', {
+        name,
+        email,
+        password,
+      });
+
+      if (response.data.statusCode === HttpStatusCode.Created) {
+        toast.success(response.data.message);
+        router.push(`/verify/${response.data.data.id}`);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error: any) {
+      // Kiểm tra trường hợp không có response
+      if (error.response) {
+        toast.error(error.response?.data?.message);
+      } else {
+        toast.error('Không thể kết nối đến server');
+      }
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false)
-	}
+  }
+};
+
 
 	return (
 		<>

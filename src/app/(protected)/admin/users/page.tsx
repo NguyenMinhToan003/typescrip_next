@@ -17,7 +17,7 @@ export default function UserPage({ children }: { children: React.ReactNode }) {
       <TableHeader>
         <TableRow>
           <TableHead>Avatar</TableHead>
-          <TableHead>TênTên</TableHead>
+          <TableHead>Tên</TableHead>
           <TableHead>Email</TableHead>
           <TableHead>Vai trò</TableHead>
           <TableHead>Kiểu tài khoản</TableHead>
