@@ -4,7 +4,8 @@ import axios from 'axios'
 
 // Tạo instance axios với cấu hình mặc định
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:4000/api/v1', // URL của API backend
+  // baseURL: 'http://localhost:4000/api/v1', // URL của API backend
+  baseURL: 'http://localhost:3000', // url test ai co ban
   headers: {
     'Content-Type': 'application/json',
   },

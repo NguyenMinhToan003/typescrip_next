@@ -21,7 +21,6 @@ declare module 'next-auth/jwt' {
         error: string;
     }
 }
-
 declare module 'next-auth' {
     /**
      * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context

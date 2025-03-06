@@ -1,4 +1,3 @@
-import { Icons } from '@/components/element/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { auth } from '@/auth';
 import {
