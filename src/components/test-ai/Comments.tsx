@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { iIsOpenAIAnalysis } from "@/types/test-ai";
 import axiosInstance from "@/utils/axios";
 import { useEffect, useState } from "react";
 
@@ -14,17 +15,15 @@ interface Comment {
 }
 
 // Props chỉ nhận postId là string
-interface CommentsProps {
-  postId: string;
-}
 
-const Comments = ({ postId }: CommentsProps) => {
+
+const Comments = ({ isOpenAIAnalysis }: iIsOpenAIAnalysis) => {
   const [comments, setComments] = useState<Comment[]>([]);
 
   // Hàm fetch bình luận từ API
   const fetchComments = async () => {
     try {
-      const response = await axiosInstance.get(`/post?postId=${postId}`); // Sửa endpoint thành /post theo API của bạn
+      const response = await axiosInstance.get(`/post?postId=${isOpenAIAnalysis.post._id}`); // Sửa endpoint thành /post theo API của bạn
       setComments(response.data.comments); // API /post trả về object với trường comments
     } catch (error) {
       console.error("Failed to fetch comments:", error);
@@ -33,12 +32,12 @@ const Comments = ({ postId }: CommentsProps) => {
 
   useEffect(() => {
     fetchComments();
-  }, [postId]);
+  }, [isOpenAIAnalysis]);
 
   return (
-    <Card className="mt-4 max-h-[400px] overflow-y-auto">
+    <Card className="mt-4 max-h-[400px] overflow-y-auto shadow-xl">
       <CardHeader>
-        <CardTitle>Bình luận</CardTitle>
+        <CardTitle>Bình luận ({comments.length})</CardTitle>
       </CardHeader>
       <CardContent>
         {comments.length === 0 ? (
