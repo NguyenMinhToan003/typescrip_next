@@ -31,18 +31,20 @@ const Post = ({ post,handleAnalysis,chosenPostId }: { post: any,handleAnalysis:(
     setIsLoading(false)
   }
   return <>
-          <Card key={post._id} className={`p-4 cursor-pointer ${chosenPostId === post._id ? 'bg-gray-200, mb-4' : ' mb-4'}`}>
+          <Card key={post._id} className={`p-4 cursor-pointer ${chosenPostId === post._id ? 'bg-gray-200, mb-4  shadow-md' : ' mb-4  shadow-md'}`}>
             <CardHeader>{post?.title}</CardHeader>
             <CardContent>
               {post?.content}
             </CardContent>
             <CardFooter className='flex justify-between gap-2'>
               <Input  onChange={(e)=>setComment(e.target.value)} value={comment}/> 
-        <Button onClick={(e) => handlSendMessage(post._id, comment)}
-              disabled={isLoading}>{
-                isLoading ? 'Đang gửi' : 'Gửi'
+        <Button 
+          onClick={(e) => handlSendMessage(post._id, comment)}
+                    disabled={isLoading}>{
+                      isLoading ? 'Đang gửi' : 'Gửi'
               }</Button>
-              <Button onClick={()=>handleAnalysis(post)}>AI Đánh giá</Button>
+        <Button className='bg-gradient-to-tr from-red-500 to-black-500'
+          onClick={() => handleAnalysis(post)}>AI Đánh giá</Button>
             </CardFooter>
           </Card>
         </>

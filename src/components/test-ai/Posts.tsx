@@ -39,7 +39,7 @@ const Posts = ({ posts }: { posts: any }) => {
         </div>
         <div className="col-span-2 sticky top-4 flex flex-col gap-4">
           <ChartC data={isOpenAIAnalysis} />
-          <Comments postId={chosenPostId} />
+          <Comments isOpenAIAnalysis={isOpenAIAnalysis} />
         </div>
       </div>
     </>

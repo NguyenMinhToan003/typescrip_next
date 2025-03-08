@@ -45,7 +45,7 @@ export function ChartC({ data }: { data: iIsOpenAIAnalysis }) {
   const totalVisitors = React.useMemo(() => data?.analysis?.totalComments || 0, [data])
 
   return (
-    <Card className='flex flex-col'>
+    <Card className='flex flex-col shadow-xl'>
       <CardHeader className='items-center pb-0'>
         <CardTitle>Pie Chart - {data.post.title}</CardTitle>
         <CardDescription>phân tích dữ liệu bình luận</CardDescription>
@@ -98,7 +98,7 @@ export function ChartC({ data }: { data: iIsOpenAIAnalysis }) {
             <TrendingUp className='h-4 w-4' />
           </div>
         )}
-        <div className='leading-none text-muted-foreground'>{data.analysis.message}</div>
+        <div className='leading-none text-muted-foreground text-center'>{data.analysis.message}</div>
       </CardFooter>
     </Card>
   )
